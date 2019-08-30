@@ -15,6 +15,9 @@ function loadEventListeners() {
 
     // remove task event
     taskList.addEventListener('click', removeTask);
+
+    // clear task events
+    clearBtn.addEventListener('click', clearTasks);
 }
 
 // add task
@@ -58,6 +61,17 @@ function removeTask(e) {
     if (e.target.parentElement.classList.contains('delete-item')) {
         if(confirm('Are you sure you want to delete this task?')) {
             e.target.parentElement.parentElement.remove();
+        }
+    }
+}
+
+// clear tasks
+function clearTasks () {
+    if(confirm('Are you sure you want to delete all the tasks?')) {
+        // taskList.innerHTML = '';
+        // faster way to do it
+        while (taskList.firstChild) {
+            taskList.removeChild(taskList.firstChild);
         }
     }
 }
